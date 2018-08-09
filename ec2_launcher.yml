@@ -41,8 +41,24 @@
   remote_user: ubuntu
   gather_facts: false
   tasks:
-    - name: Install Python
+    - name: Install Python Minimal
       raw: sudo apt update && sudo apt install -y python-minimal
+
+    - name: Add Latest Repository for Ansible
+      raw: sudo apt-add-repository ppa:ansible/ansible -y
+   
+    - name: Update Repo data
+      raw: sudo apt-get update -y  
+
+    - name: Install Ansible
+      raw: sudo apt-get install -y ansible
+
+    - name: Configure Local host for Ansible
+      raw: sudo sh -c 'echo "localhost ansible_connection=local" >> /etc/ansible/hosts' 
+
+    - name: Configure Log for Ansible
+      raw: ssudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg' 
+
     - name: Pull AWX Foundation Artifacts
       git:
         repo: 'https://github.com/moffzilla/awx.git'

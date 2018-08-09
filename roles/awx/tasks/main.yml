@@ -1,7 +1,7 @@
 ---
 - name: Pull AWX Main Artifacts
   git:
-    repo: 'https://github.com/moffzilla/awx.git'
+    repo: 'https://github.com/ansible/awx.git'
     dest: /home/ubuntu/awx
 
 - name: Build and execute AWX images
