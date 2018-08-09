@@ -1,0 +1,13 @@
+---
+- name: Pull AWX Base Artifacts
+  git:
+    repo: 'https://github.com/moffzilla/awx.git'
+    dest: /home/ubuntu/awx-base
+
+- name: Pull AWX Main Artifacts
+  git:
+    repo: 'https://github.com/moffzilla/awx.git'
+    dest: /home/ubuntu/awx
+
+- name: Build and execute AWX images
+  command: ansible-playbook -i inventory -e docker_registry_password=password install.yml
