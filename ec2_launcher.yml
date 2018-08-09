@@ -57,7 +57,7 @@
       raw: sudo sh -c 'echo "localhost ansible_connection=local" >> /etc/ansible/hosts' 
 
     - name: Configure Log for Ansible
-      raw: ssudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg' 
+      raw: sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg' 
 
     - name: Pull AWX Foundation Artifacts
       git:
