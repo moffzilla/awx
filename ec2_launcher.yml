@@ -43,9 +43,8 @@
   tasks:
     - name: Install Python
       raw: sudo apt update && sudo apt install -y python-minimal
-
-- name: Pull AWX Main Artifacts
-  git:
-    repo: 'https://github.com/moffzilla/awx.git'
-    dest: /home/ubuntu/awx
+    - name: Pull AWX Foundation Artifacts
+      git:
+        repo: 'https://github.com/moffzilla/awx.git'
+        dest: /home/ubuntu/awx-base
 
