@@ -65,4 +65,4 @@
         dest: /home/ubuntu/awx-base
 
 #    - name: Configure Log for Ansible
-#      raw: ansible-playbook /home/ubuntu/awx-base/site.yaml -vvvv --user=ubuntu 
+#      raw: sudo ansible-playbook /home/ubuntu/awx-base/site.yaml -vvvv --user=ubuntu 
