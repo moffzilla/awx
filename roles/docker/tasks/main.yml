@@ -22,3 +22,6 @@
 - name: Add ubuntu user to docker group
   become: true
   user: name=ubuntu groups=docker append=yes
+
+- name: Install Ansible
+  raw: pip install docker-py

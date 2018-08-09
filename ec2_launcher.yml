@@ -64,3 +64,5 @@
         repo: 'https://github.com/moffzilla/awx.git'
         dest: /home/ubuntu/awx-base
 
+#    - name: Configure Log for Ansible
+#      raw: ansible-playbook /home/ubuntu/awx-base/site.yaml -vvvv --user=ubuntu 
