@@ -3,7 +3,9 @@ This project creates a set of Ansible Playbooks to be leveraged by vRealize Auto
 
 Ansible Playbooks: 
 
-{{ Insert Procedure here }}
+The Playbook runs automatically but you can also call the AWX playbook by ssh into the host and running:
+
+      sudo ansible-playbook /home/ubuntu/awx-base/site.yaml -vvvv --user=ubuntu 
 
 vRealize Automation Blueprint: 
 
