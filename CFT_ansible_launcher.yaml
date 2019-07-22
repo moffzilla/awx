@@ -76,19 +76,18 @@ Resources:
           sudo usermod -aG docker ubuntu
           sudo apt-get install nodejs -y
           sudo apt install nodejs-legacy -y
-          sudo apt install npm -y
+          sudo apt install npm  -y
+          sudo npm install npm --global
           sudo apt install python-pip -y
           echo "localhost ansible_connection=local" > /etc/ansible/hosts
           sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg'
-          sh -c 'sed -i -e 's/all/localhost/g' /home/ubuntu/awx/installer/install.yml'
           sudo apt-get upgrade -y
           sudo pip uninstall docker docker-py docker-compose
           sudo pip install docker-compose
-          git clone https://github.com/ansible/awx.git          
+          git clone https://github.com/ansible/awx.git
+          sh -c 'sed -i -e 's/all/localhost/g' /home/ubuntu/awx/installer/install.yml'          
           cd awx/installer
           ansible-playbook -i inventory install.yml
-
-
  
           #sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/tempo ${AnsiblePlaybook}
 #  NewVolume:
