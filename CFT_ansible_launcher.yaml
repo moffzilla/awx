@@ -65,7 +65,8 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           sudo apt-get update -y
-          sudo apt-get install -y ansible git
+          sudo apt install -y aptitude
+          sudo apt-get install -y git
           echo "localhost ansible_connection=local" > /etc/ansible/hosts
           sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg'
           sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/awx ${AnsiblePlaybook}
