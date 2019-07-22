@@ -64,28 +64,29 @@ Resources:
       UserData:  
         Fn::Base64: !Sub |
           #!/bin/bash
+          sudo apt-add-repository ppa:ansible/ansible -y
           sudo apt-get update -y
           sudo apt install -y aptitude
           sudo apt-get install -y git
+          sudo apt-get install ansible -y
           echo "localhost ansible_connection=local" > /etc/ansible/hosts
           sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg'
-          sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/tempo ${AnsiblePlaybook}
-#    CreationPolicy:
-#      ResourceSignal:
-#        Timeout: PT5M
-  NewVolume:
-    Type: 'AWS::EC2::Volume'
-    Properties:
-      Size: '1'
-      AvailabilityZone: !GetAtt 
-        - WebServerInstance
-        - AvailabilityZone
-  MountPoint:
-    Type: 'AWS::EC2::VolumeAttachment'
-    Properties:
-      InstanceId: !Ref WebServerInstance
-      VolumeId: !Ref NewVolume
-      Device: /dev/sdh
+          sudo git clone https://github.com/ansible/awx.git
+          sudo sh -c 'sed -i -e 's/all/localhost/g' /home/ubuntu/awx/installer/install.yml'
+          #sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/tempo ${AnsiblePlaybook}
+#  NewVolume:
+#    Type: 'AWS::EC2::Volume'
+#    Properties:
+#      Size: '1'
+#      AvailabilityZone: !GetAtt 
+#        - WebServerInstance
+#        - AvailabilityZone
+#  MountPoint:
+#    Type: 'AWS::EC2::VolumeAttachment'
+#    Properties:
+#      InstanceId: !Ref WebServerInstance
+#      VolumeId: !Ref NewVolume
+#      Device: /dev/sdh
   WebServerSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
