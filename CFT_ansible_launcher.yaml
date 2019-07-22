@@ -69,7 +69,7 @@ Resources:
           sudo apt-get install -y git
           echo "localhost ansible_connection=local" > /etc/ansible/hosts
           sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg'
-          sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/awx ${AnsiblePlaybook}
+          sudo ansible-pull -U  ${AnsibleRepository} -d /home/ubuntu/tempo ${AnsiblePlaybook}
 #    CreationPolicy:
 #      ResourceSignal:
 #        Timeout: PT5M
