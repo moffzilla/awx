@@ -82,7 +82,7 @@ Resources:
           sudo chmod 777 /etc/ansible/hosts
           echo "localhost ansible_connection=local" > /etc/ansible/hosts
           sudo sh -c 'sed -i -e 's/#log_path/log_path/g' /etc/ansible/ansible.cfg'
-          sudo apt-get upgrade -y
+          sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
           sudo pip uninstall docker docker-py docker-compose
           sudo pip install docker-compose
           git clone https://github.com/ansible/awx.git
